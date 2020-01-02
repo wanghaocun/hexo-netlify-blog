@@ -99,4 +99,32 @@ theme: fluid
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: ''
+  type: git
+  repo: git@github.com:wanghaocun/hexo-netlify-blog.git
+  branch: netlify-pages
+  message: 
+
+# minifier
+all_minifier: true
+html_minifier:
+  enable: true
+  ignore_error: false
+  exclude:
+css_minifier:
+  enable: true
+  exclude:
+    - '*.min.css'
+js_minifier:
+  enable: true
+  mangle: true
+  output: true
+  compress: true
+  exclude:
+    - '*.min.js'
+image_minifier:
+  enable: true
+  interlaced: true
+  multipass: true
+  optimizationLevel: 2
+  pngquant: true
+  progressive: true
