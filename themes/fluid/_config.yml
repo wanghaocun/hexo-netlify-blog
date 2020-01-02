@@ -102,8 +102,10 @@ banner_scroll: false  # 头图是否跟随页面滚动
 footer:
   statistics:  # 统计网站 PV、UV，使用的是不蒜子，显示在页脚
     enable: true
-    pv_format: "总访问量 {} 次"  # 显示的文本，{}是数字的占位符（必须包含)，下同
-    uv_format: "总访客数 {} 人"
+    #pv_format: "总访问量 {} 次"  # 显示的文本，{}是数字的占位符（必须包含)，下同
+    pv_format: " {} 次"  # 显示的文本，{}是数字的占位符（必须包含)，下同
+    #uv_format: "总访客数 {} 人"
+    uv_format: " {} 人"
 
   beian:  # The footer of China's website policy, other areas keep disable
     enable: false
