@@ -7,7 +7,15 @@ date: 2019-12-31 15:29:47
 updated: 2019-12-31 16:29:47
 categories: DDDD
 permalink: 1577809488
+index_img: https://filein.oss-cn-hangzhou.aliyuncs.com/chaos/one/docker-logo.png
+banner_img: 
 ---
+
+
+
+# Docker 札记
+
+![docker-begin](https://filein.oss-cn-hangzhou.aliyuncs.com/chaos/one/docker-begin.png)
 
 ## 复制文件
 

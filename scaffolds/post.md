@@ -2,7 +2,9 @@
 title: {{ title }}
 date: {{ date }}
 updated: {{ data }}
-tags:
+tags: 
 categories: 
 permalink: 
+index_img: 
+banner_img: 
 ---
