@@ -1,201 +1,205 @@
-<!DOCTYPE html><html lang="zh-CN" data-default-color-scheme="&#34;auto&#34;"><head><meta charset="UTF-8"><link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png"><link rel="icon" type="image/png" href="/img/favicon.png"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="theme-color" content="#2f4154"><meta name="description" content="记录总结工作生活喜怒哀乐"><meta name="author" content="王浩存"><meta name="keywords" content="开发,技术,docker,java,python"><title>Docker Container Misc - 王浩存的博客</title><link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css"><link rel="stylesheet" href="/lib/hint/hint.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css"><link rel="stylesheet" href="/css/main.css"><script src="/js/utils.js"></script><script src="/js/color-schema.js"></script><meta name="generator" content="Hexo 4.2.0"></head><body><header style="height:70vh"><nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"><div class="container"><a class="navbar-brand" href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a> <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon"><span></span><span></span><span></span></div></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto text-center"><li class="nav-item"><a class="nav-link" href="/"><i class="iconfont icon-home-fill"></i> 首页</a></li><li class="nav-item"><a class="nav-link" href="/archives/"><i class="iconfont icon-archive-fill"></i> 归档</a></li><li class="nav-item"><a class="nav-link" href="/categories/"><i class="iconfont icon-category-fill"></i> 分类</a></li><li class="nav-item"><a class="nav-link" href="/tags/"><i class="iconfont icon-tags-fill"></i> 标签</a></li><li class="nav-item"><a class="nav-link" href="/about/"><i class="iconfont icon-user-fill"></i> 关于</a></li><li class="nav-item" id="search-btn"><a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i class="iconfont icon-search"></i>&nbsp;</a></li><li class="nav-item" id="color-toggle-btn"><a class="nav-link" href="javascript:">&nbsp;<i class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a></li></ul></div></div></nav><div class="banner intro-2" id="background" parallax="true" style="background:url(https://filein.oss-cn-hangzhou.aliyuncs.com/chaos/one/docker-logo.png) no-repeat center center;background-size:cover"><div class="full-bg-img"><div class="mask flex-center" style="background-color:rgba(0,0,0,.3)"><div class="container page-header text-center fade-in-up"><span class="h2" id="subtitle"></span><div class="mt-3 post-meta"><i class="iconfont icon-date-fill" aria-hidden="true"></i> <time datetime="2020-09-03 19:01" pubdate>2020年9月3日 晚上</time></div><div class="mt-1"><span class="post-meta mr-2"><i class="iconfont icon-chart"></i> 1.6k 字 </span><span class="post-meta mr-2"><i class="iconfont icon-clock-fill"></i> 27 分钟</span></div></div></div></div></div></header><main><div class="container-fluid"><div class="row"><div class="d-none d-lg-block col-lg-2"></div><div class="col-lg-8 nopadding-md"><div class="container nopadding-md" id="board-ctn"><div class="py-5" id="board"><article class="post-content mx-auto" id="post"><h1 style="display:none">Docker Container Misc</h1><div class="markdown-body" id="post-body"><h1 id="docker-memo"><a href="#docker-memo" class="headerlink" title="docker memo"></a>docker memo</h1><h2 id="time-zone-issue"><a href="#time-zone-issue" class="headerlink" title="time zone issue"></a>time zone issue</h2><p>参考笔记 <a href="http://note.youdao.com/noteshare?id=7f541ca3b715591c2d76e7a96325009f&sub=C739A09EFFA746B2AE360F27EC5140A1" target="_blank" rel="noopener">《Docker 时区调整方案》</a></p><ul><li><p>Dockerfile构建重写</p><pre><code>...
-RUN mkdir -p /some/path \
-  &amp;&amp; chmod 777 /some/path \
-  ==============================================================
-  &amp;&amp; rm -rf /etc/localtime \
-  &amp;&amp; /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-  &amp;&amp; echo &#39;Asia/Shanghai&#39; &gt;/etc/timezone
-  ==============================================================
-...</code></pre></li><li><p>run 加环境变量 -e TZ（并非所有容器都生效）<br>```sh</p><h1 id="docker-run-…"><a href="#docker-run-…" class="headerlink" title="docker run … \"></a>docker run … \</h1></li><li><h1 id="e-TZ-Asia-Shanghai"><a href="#e-TZ-Asia-Shanghai" class="headerlink" title="e TZ=Asia/Shanghai \"></a>e TZ=Asia/Shanghai \</h1><p>…</p><pre><code></code></pre></li></ul><h2 id="manual"><a href="#manual" class="headerlink" title="manual"></a>manual</h2><h3 id="docker-practice"><a href="#docker-practice" class="headerlink" title="docker_practice"></a>docker_practice</h3><p><a href="https://vuepress.mirror.docker-practice.com/" target="_blank" rel="noopener">online</a><br><a href="https://github.com/yeasy/docker_practice/wiki/%E7%A6%BB%E7%BA%BF%E9%98%85%E8%AF%BB%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3" target="_blank" rel="noopener">offline</a></p><pre><code class="sh"># 为了保持内容为最新，建议每次阅读前先 pull 最新镜像
+<!DOCTYPE html><html lang="zh-CN" data-default-color-scheme="&#34;auto&#34;"><head><meta charset="UTF-8"><link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png"><link rel="icon" type="image/png" href="/img/favicon.png"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="theme-color" content="#2f4154"><meta name="description" content="记录总结工作生活喜怒哀乐"><meta name="author" content="王浩存"><meta name="keywords" content="开发,技术,docker,java,python"><title>Docker Container Misc - 王浩存的博客</title><link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css"><link rel="stylesheet" href="/lib/hint/hint.min.css"><link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/monokai.min.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css"><link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css"><link rel="stylesheet" href="/css/main.css"><script src="/js/utils.js"></script><script src="/js/color-schema.js"></script><meta name="generator" content="Hexo 4.2.0"></head><body><header style="height:70vh"><nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar"><div class="container"><a class="navbar-brand" href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a> <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon"><span></span><span></span><span></span></div></button><div class="collapse navbar-collapse" id="navbarSupportedContent"><ul class="navbar-nav ml-auto text-center"><li class="nav-item"><a class="nav-link" href="/"><i class="iconfont icon-home-fill"></i> 首页</a></li><li class="nav-item"><a class="nav-link" href="/archives/"><i class="iconfont icon-archive-fill"></i> 归档</a></li><li class="nav-item"><a class="nav-link" href="/categories/"><i class="iconfont icon-category-fill"></i> 分类</a></li><li class="nav-item"><a class="nav-link" href="/tags/"><i class="iconfont icon-tags-fill"></i> 标签</a></li><li class="nav-item"><a class="nav-link" href="/about/"><i class="iconfont icon-user-fill"></i> 关于</a></li><li class="nav-item" id="search-btn"><a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i class="iconfont icon-search"></i>&nbsp;</a></li><li class="nav-item" id="color-toggle-btn"><a class="nav-link" href="javascript:">&nbsp;<i class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a></li></ul></div></div></nav><div class="banner intro-2" id="background" parallax="true" style="background:url(https://filein.oss-cn-hangzhou.aliyuncs.com/chaos/one/docker-logo.png) no-repeat center center;background-size:cover"><div class="full-bg-img"><div class="mask flex-center" style="background-color:rgba(0,0,0,.3)"><div class="container page-header text-center fade-in-up"><span class="h2" id="subtitle"></span><div class="mt-3 post-meta"><i class="iconfont icon-date-fill" aria-hidden="true"></i> <time datetime="2020-09-03 19:01" pubdate>2020年9月3日 晚上</time></div><div class="mt-1"><span class="post-meta mr-2"><i class="iconfont icon-chart"></i> 1.6k 字 </span><span class="post-meta mr-2"><i class="iconfont icon-clock-fill"></i> 27 分钟</span></div></div></div></div></div></header><main><div class="container-fluid"><div class="row"><div class="d-none d-lg-block col-lg-2"></div><div class="col-lg-8 nopadding-md"><div class="container nopadding-md" id="board-ctn"><div class="py-5" id="board"><article class="post-content mx-auto" id="post"><h1 style="display:none">Docker Container Misc</h1><div class="markdown-body" id="post-body"><h1 id="docker-memo"><a href="#docker-memo" class="headerlink" title="docker memo"></a>docker memo</h1><h2 id="time-zone-issue"><a href="#time-zone-issue" class="headerlink" title="time zone issue"></a>time zone issue</h2><p>参考笔记 <a href="http://note.youdao.com/noteshare?id=7f541ca3b715591c2d76e7a96325009f&sub=C739A09EFFA746B2AE360F27EC5140A1" target="_blank" rel="noopener">《Docker 时区调整方案》</a></p><ul><li><p>Dockerfile构建重写</p><pre><code class="hljs jboss-cli"><span class="hljs-string">...</span>
+RUN mkdir -p <span class="hljs-string">/some/path</span> \
+    &amp;&amp; chmod 777 <span class="hljs-string">/some/path</span> \
+    ==============================================================
+    &amp;&amp; rm -rf <span class="hljs-string">/etc/localtime</span> \
+    &amp;&amp; <span class="hljs-string">/bin/cp</span> <span class="hljs-string">/usr/share/zoneinfo/Asia/Shanghai</span> <span class="hljs-string">/etc/localtime</span> \
+    &amp;&amp; <span class="hljs-keyword">echo</span> 'Asia/Shanghai' &gt;<span class="hljs-string">/etc/timezone</span>
+    ==============================================================
+<span class="hljs-string">...</span></code></pre></li><li><p>run 加环境变量 -e TZ（并非所有容器都生效）</p><pre><code class="hljs sh">docker run ... \
+=====================
+-e TZ=Asia/Shanghai \
+=====================
+...</code></pre></li></ul><h2 id="manual"><a href="#manual" class="headerlink" title="manual"></a>manual</h2><h3 id="docker-practice"><a href="#docker-practice" class="headerlink" title="docker_practice"></a>docker_practice</h3><p><a href="https://vuepress.mirror.docker-practice.com/" target="_blank" rel="noopener">online</a><br><a href="https://github.com/yeasy/docker_practice/wiki/%E7%A6%BB%E7%BA%BF%E9%98%85%E8%AF%BB%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3" target="_blank" rel="noopener">offline</a></p><pre><code class="hljs sh"><span class="hljs-comment"># 为了保持内容为最新，建议每次阅读前先 pull 最新镜像</span>
 
-# GitBook 格式
+<span class="hljs-comment"># GitBook 格式</span>
 docker pull ccr.ccs.tencentyun.com/dockerpracticesig/docker_practice
 docker run -d -p 14000:80 --name docker_practice_gitbook ccr.ccs.tencentyun.com/dockerpracticesig/docker_practice
 
-# Vuepress 格式
+<span class="hljs-comment"># Vuepress 格式</span>
 docker pull ccr.ccs.tencentyun.com/dockerpracticesig/docker_practice:vuepress
-docker run -d -p 24000:80 --name docker_practice_vuepress  ccr.ccs.tencentyun.com/dockerpracticesig/docker_practice:vuepress</code></pre><h3 id="docker-getting-started"><a href="#docker-getting-started" class="headerlink" title="docker/getting-started"></a>docker/getting-started</h3><pre><code>docker pull docker/getting-started
-docker run -d -p 34000:80 --name docker-getting-started docker/getting-started</code></pre><h2 id="repo"><a href="#repo" class="headerlink" title="repo"></a>repo</h2><ul><li><a href="https://hub.docker.com/" target="_blank" rel="noopener">docker hub</a></li><li><a href="https://hub.daocloud.io/repos" target="_blank" rel="noopener">daocloud-道客</a></li><li><a href="https://c.163yun.com/hub#/home" target="_blank" rel="noopener">网易云</a></li></ul><h2 id="mirror"><a href="#mirror" class="headerlink" title="mirror"></a>mirror</h2><p><a href="https://github.com/yeasy/docker_practice/blob/master/install/mirror.md" target="_blank" rel="noopener">docker-practice</a></p><blockquote><p><a href="https://github.com/docker-practice/docker-registry-cn-mirror-test/actions" target="_blank" rel="noopener">mirror-test</a></p></blockquote><ul><li><a href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors" target="_blank" rel="noopener">阿里云镜像源</a> <code>需要登录</code></li><li><a href="https://mirrors.ustc.edu.cn/help/dockerhub.html" target="_blank" rel="noopener">科大镜像源</a> <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/docker" target="_blank" rel="noopener"><code>文档</code></a></li><li><a href="https://www.daocloud.io/mirror#accelerator-doc" target="_blank" rel="noopener">道客镜像源</a> <a href="http://guide.daocloud.io/dcs/docker-9153151.html" target="_blank" rel="noopener"><code>文档</code></a></li><li><a href="https://kirk-enterprise.github.io/hub-docs/#/user-guide/mirror" target="_blank" rel="noopener">七牛云镜像源</a></li><li><a href="https://www.163yun.com/help/documents/56918246390157312" target="_blank" rel="noopener">网易云镜像源</a></li><li><a href="https://cloud.baidu.com/doc/CCE/s/Yjxppt74z#%E4%BD%BF%E7%94%A8dockerhub%E5%8A%A0%E9%80%9F%E5%99%A8" target="_blank" rel="noopener">百度云镜像源</a></li></ul><pre><code class="json">{
-  &quot;registry-mirrors&quot;: [
-    &quot;https://gsidpfxa.mirror.aliyuncs.com&quot;,
-    &quot;https://docker.mirrors.ustc.edu.cn/&quot;,
-    &quot;http://f1361db2.m.daocloud.io&quot;,
-    &quot;https://reg-mirror.qiniu.com&quot;,
-    &quot;https://hub-mirror.c.163.com&quot;,
-    &quot;https://mirror.baidubce.com&quot;
+docker run -d -p 24000:80 --name docker_practice_vuepress  ccr.ccs.tencentyun.com/dockerpracticesig/docker_practice:vuepress</code></pre><h3 id="docker-getting-started"><a href="#docker-getting-started" class="headerlink" title="docker/getting-started"></a>docker/getting-started</h3><pre><code class="hljs crmsh">docker pull docker/getting-<span class="hljs-literal">started</span>
+docker run -d -p <span class="hljs-number">34000</span>:<span class="hljs-number">80</span> --name docker-getting-<span class="hljs-literal">started</span> docker/getting-<span class="hljs-literal">started</span></code></pre><h2 id="repo"><a href="#repo" class="headerlink" title="repo"></a>repo</h2><ul><li><a href="https://hub.docker.com/" target="_blank" rel="noopener">docker hub</a></li><li><a href="https://hub.daocloud.io/repos" target="_blank" rel="noopener">daocloud-道客</a></li><li><a href="https://c.163yun.com/hub#/home" target="_blank" rel="noopener">网易云</a></li></ul><h2 id="mirror"><a href="#mirror" class="headerlink" title="mirror"></a>mirror</h2><p><a href="https://github.com/yeasy/docker_practice/blob/master/install/mirror.md" target="_blank" rel="noopener">docker-practice</a></p><blockquote><p><a href="https://github.com/docker-practice/docker-registry-cn-mirror-test/actions" target="_blank" rel="noopener">mirror-test</a></p></blockquote><ul><li><a href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors" target="_blank" rel="noopener">阿里云镜像源</a> <code>需要登录</code></li><li><a href="https://mirrors.ustc.edu.cn/help/dockerhub.html" target="_blank" rel="noopener">科大镜像源</a> <a href="https://lug.ustc.edu.cn/wiki/mirrors/help/docker" target="_blank" rel="noopener"><code>文档</code></a></li><li><a href="https://www.daocloud.io/mirror#accelerator-doc" target="_blank" rel="noopener">道客镜像源</a> <a href="http://guide.daocloud.io/dcs/docker-9153151.html" target="_blank" rel="noopener"><code>文档</code></a></li><li><a href="https://kirk-enterprise.github.io/hub-docs/#/user-guide/mirror" target="_blank" rel="noopener">七牛云镜像源</a></li><li><a href="https://www.163yun.com/help/documents/56918246390157312" target="_blank" rel="noopener">网易云镜像源</a></li><li><a href="https://cloud.baidu.com/doc/CCE/s/Yjxppt74z#%E4%BD%BF%E7%94%A8dockerhub%E5%8A%A0%E9%80%9F%E5%99%A8" target="_blank" rel="noopener">百度云镜像源</a></li></ul><pre><code class="hljs json">&#123;
+  <span class="hljs-attr">"registry-mirrors"</span>: [
+    <span class="hljs-string">"https://gsidpfxa.mirror.aliyuncs.com"</span>,
+    <span class="hljs-string">"https://docker.mirrors.ustc.edu.cn/"</span>,
+    <span class="hljs-string">"http://f1361db2.m.daocloud.io"</span>,
+    <span class="hljs-string">"https://reg-mirror.qiniu.com"</span>,
+    <span class="hljs-string">"https://hub-mirror.c.163.com"</span>,
+    <span class="hljs-string">"https://mirror.baidubce.com"</span>
   ]
-}</code></pre><h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><blockquote><p>基于<code>Debian</code>构建<br><a href="https://hub.docker.com/_/mysql" target="_blank" rel="noopener">docker hub info</a><br><a href="http://note.youdao.com/noteshare?id=909efdec4e372b8119ad834c73924a17" target="_blank" rel="noopener">custom.cnf</a></p></blockquote><h3 id="8-latest"><a href="#8-latest" class="headerlink" title="8(latest)"></a>8(latest)</h3><pre><code class="sh"># Windows cmd
+&#125;</code></pre><h2 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h2><blockquote><p>基于<code>Debian</code>构建<br><a href="https://hub.docker.com/_/mysql" target="_blank" rel="noopener">docker hub info</a><br><a href="http://note.youdao.com/noteshare?id=909efdec4e372b8119ad834c73924a17" target="_blank" rel="noopener">custom.cnf</a></p></blockquote><h3 id="8-latest"><a href="#8-latest" class="headerlink" title="8(latest)"></a>8(latest)</h3><pre><code class="hljs sh"><span class="hljs-comment"># Windows cmd</span>
 docker run -d -p 3306:3306 \
 -v a:/Docker/mysql/conf/custom.cnf:/etc/mysql/conf.d/custom.cnf \
 -v a:/Docker/mysql/data:/var/lib/mysql \
--v a:/Docker/mysql/logs:/var/log/mysql \
+-v a:/Docker/mysql/logs:/var/<span class="hljs-built_in">log</span>/mysql \
 -e MYSQL_ROOT_PASSWORD=123456 \
 -e TZ=Asia/Shanghai \
 --security-opt seccomp=unconfined \
 --name mysql --network dev --restart=always \
 mysql
 
-# MySQL8中默认字符集[--character-set-server=utf8mb4]
-# 默认排序规则[--collation-server=utf8mb4_0900_ai_ci]
-# [-e TZ=Asia/Shanghai] -- custom.cnf文件的时区设置修改不了日志文件使用的时区
-# [--security-opt seccomp=unconfined] -- 不显示报错信息(mbind: Operation not permitted)（不设置也不影响使用）
+<span class="hljs-comment"># MySQL8中默认字符集[--character-set-server=utf8mb4]</span>
+<span class="hljs-comment"># 默认排序规则[--collation-server=utf8mb4_0900_ai_ci]</span>
+<span class="hljs-comment"># [-e TZ=Asia/Shanghai] -- custom.cnf文件的时区设置修改不了日志文件使用的时区</span>
+<span class="hljs-comment"># [--security-opt seccomp=unconfined] -- 不显示报错信息(mbind: Operation not permitted)（不设置也不影响使用）</span>
 
 
-# 校验参数
+<span class="hljs-comment"># 校验参数</span>
 SELECT NOW();
-show variables like &#39;slow_query%&#39;;
-show variables like &#39;long_query_time&#39;;
-show variables like &#39;slow_query_log_file&#39;;
+show variables like <span class="hljs-string">'slow_query%'</span>;
+show variables like <span class="hljs-string">'long_query_time'</span>;
+show variables like <span class="hljs-string">'slow_query_log_file'</span>;
 
-SELECT @@global.time_zone;</code></pre><blockquote><p>// 暂未发现下面问题，暂不修改<br>MySQL8中，默认排序规则居然从utf8mb4_general_ci修改为了utf8mb4_0900_ai_ci,造成某些特殊字符插入不进去，这里把MySQL的默认排序规则重新修改了utf8mb4_general_ci</p><blockquote><p>collation-server=utf8mb4_general_ci</p></blockquote></blockquote><blockquote><p>mbind: Operation not permitted问题 -&gt; <a href="https://docs.docker.com/engine/security/seccomp/" target="_blank" rel="noopener">seccomp</a></p></blockquote><blockquote><p><a href="https://blog.csdn.net/zgpeace/article/details/104114000" target="_blank" rel="noopener">Docker MySQL 8 慢查询日志监控详解</a></p></blockquote><blockquote><p>报错信息[全局可写]<code>mysqld: [Warning] World-writable config file &#39;/etc/mysql/conf.d/custom.cnf&#39; is ignored.</code> -&gt; <a href="https://stackoverflow.com/questions/37001272/fixing-world-writable-mysql-error-in-docker" target="_blank" rel="noopener">sof-link</a> <code>Windows简单将文件改为只读属性即可；Linux使用chmod修改.cnf文件权限(755)</code></p></blockquote><blockquote><p><a href="https://stackoverflow.com/questions/35123049/how-to-change-time-zone-of-error-log-file-of-mysql" target="_blank" rel="noopener">日志时区问题</a></p></blockquote><p>cnf-file:<br><strong><em><a href="https://dev.mysql.com/doc/refman/8.0/en/" target="_blank" rel="noopener">Manual</a></em></strong></p><blockquote><p><a href="https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html" target="_blank" rel="noopener">server-system-variables</a><br><a href="https://dev.mysql.com/doc/refman/8.0/en/mysql-command-options.html" target="_blank" rel="noopener">mysql-command-options</a><br><a href="https://dev.mysql.com/doc/refman/8.0/en/mysqladmin.html" target="_blank" rel="noopener">mysqladmin</a><br><a href="https://dev.mysql.com/doc/refman/8.0/en/mysqlbinlog.html" target="_blank" rel="noopener">mysqlbinlog</a><br><a href="https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html" target="_blank" rel="noopener">mysqldump</a><br><a href="https://dev.mysql.com/doc/refman/8.0/en/mysqldumpslow.html" target="_blank" rel="noopener">mysqldumpslow</a></p></blockquote><pre><code>[client]
-default-character-set=utf8mb4
+SELECT @@global.time_zone;</code></pre><blockquote><p>// 暂未发现下面问题，暂不修改<br>MySQL8中，默认排序规则居然从utf8mb4_general_ci修改为了utf8mb4_0900_ai_ci,造成某些特殊字符插入不进去，这里把MySQL的默认排序规则重新修改了utf8mb4_general_ci</p><blockquote><p>collation-server=utf8mb4_general_ci</p></blockquote></blockquote><blockquote><p>mbind: Operation not permitted问题 -&gt; <a href="https://docs.docker.com/engine/security/seccomp/" target="_blank" rel="noopener">seccomp</a></p></blockquote><blockquote><p><a href="https://blog.csdn.net/zgpeace/article/details/104114000" target="_blank" rel="noopener">Docker MySQL 8 慢查询日志监控详解</a></p></blockquote><blockquote><p>报错信息[全局可写]<code>mysqld: [Warning] World-writable config file &#39;/etc/mysql/conf.d/custom.cnf&#39; is ignored.</code> -&gt; <a href="https://stackoverflow.com/questions/37001272/fixing-world-writable-mysql-error-in-docker" target="_blank" rel="noopener">sof-link</a> <code>Windows简单将文件改为只读属性即可；Linux使用chmod修改.cnf文件权限(755)</code></p></blockquote><blockquote><p><a href="https://stackoverflow.com/questions/35123049/how-to-change-time-zone-of-error-log-file-of-mysql" target="_blank" rel="noopener">日志时区问题</a></p></blockquote><p>cnf-file:<br><strong><em><a href="https://dev.mysql.com/doc/refman/8.0/en/" target="_blank" rel="noopener">Manual</a></em></strong></p><blockquote><p><a href="https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html" target="_blank" rel="noopener">server-system-variables</a><br><a href="https://dev.mysql.com/doc/refman/8.0/en/mysql-command-options.html" target="_blank" rel="noopener">mysql-command-options</a><br><a href="https://dev.mysql.com/doc/refman/8.0/en/mysqladmin.html" target="_blank" rel="noopener">mysqladmin</a><br><a href="https://dev.mysql.com/doc/refman/8.0/en/mysqlbinlog.html" target="_blank" rel="noopener">mysqlbinlog</a><br><a href="https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html" target="_blank" rel="noopener">mysqldump</a><br><a href="https://dev.mysql.com/doc/refman/8.0/en/mysqldumpslow.html" target="_blank" rel="noopener">mysqldumpslow</a></p></blockquote><pre><code class="hljs ini"><span class="hljs-section">[client]</span>
+<span class="hljs-attr">default-character-set</span>=utf8mb4
+<span class="hljs-section">
+[mysql]</span>
+<span class="hljs-attr">default-character-set</span>=utf8mb4
+<span class="hljs-section">
+[mysqld]</span>
+<span class="hljs-comment"># 使用了[-e TZ=Asia/Shanghai]永久设置系统时区</span>
+<span class="hljs-comment">#default_time_zone=+8:00</span>
 
-[mysql]
-default-character-set=utf8mb4
+<span class="hljs-attr">general-log</span>=<span class="hljs-literal">ON</span>
+<span class="hljs-attr">general-log-file</span>=/var/log/mysql/mysql.log
 
-[mysqld]
-# 使用了[-e TZ=Asia/Shanghai]永久设置系统时区
-#default_time_zone=+8:00
+<span class="hljs-attr">log-error</span>=/var/log/mysql/error.log
 
-general-log=ON
-general-log-file=/var/log/mysql/mysql.log
+<span class="hljs-attr">slow_query_log</span> =<span class="hljs-literal">ON</span>
+<span class="hljs-attr">long_query_time</span>=<span class="hljs-number">9</span>
+<span class="hljs-attr">slow_query_log_file</span>=/var/log/mysql/slowquery.log
+<span class="hljs-comment">#log-queries-not-using-indexes=ON</span>
 
-log-error=/var/log/mysql/error.log
+<span class="hljs-comment">#lower_case_table_names=1</span>
 
-slow_query_log =ON
-long_query_time=9
-slow_query_log_file=/var/log/mysql/slowquery.log
-#log-queries-not-using-indexes=ON
-
-#lower_case_table_names=1
-
-# 解决日志文件中的时区问题
-log_timestamps = SYSTEM</code></pre><h3 id="5-7"><a href="#5-7" class="headerlink" title="5.7"></a>5.7</h3><pre><code>docker run -d -p 3306:3306  \
--v a:/Docker/mysql/conf/custom.cnf:/etc/mysql/conf.d/custom.cnf \
--v a:/Docker/mysql/data:/var/lib/mysql \
--v a:/Docker/mysql/logs:/var/log/mysql \
--e MYSQL_ROOT_PASSWORD=123456 \
+<span class="hljs-comment"># 解决日志文件中的时区问题</span>
+<span class="hljs-attr">log_timestamps</span> = SYSTEM</code></pre><h3 id="5-7"><a href="#5-7" class="headerlink" title="5.7"></a>5.7</h3><pre><code class="hljs groovy">docker run -d -p <span class="hljs-number">3306</span>:<span class="hljs-number">3306</span>  \
+-v <span class="hljs-string">a:</span><span class="hljs-regexp">/Docker/</span>mysql<span class="hljs-regexp">/conf/</span>custom.<span class="hljs-string">cnf:</span><span class="hljs-regexp">/etc/</span>mysql<span class="hljs-regexp">/conf.d/</span>custom.cnf \
+-v <span class="hljs-string">a:</span><span class="hljs-regexp">/Docker/</span>mysql<span class="hljs-regexp">/data:/</span>var<span class="hljs-regexp">/lib/</span>mysql \
+-v <span class="hljs-string">a:</span><span class="hljs-regexp">/Docker/</span>mysql<span class="hljs-regexp">/logs:/</span>var<span class="hljs-regexp">/log/</span>mysql \
+-e MYSQL_ROOT_PASSWORD=<span class="hljs-number">123456</span> \
 -e TZ=Asia/Shanghai \
 --name mysql5 \
 --network dev \
 --restart=always \
-mysql:5.7 \
+<span class="hljs-string">mysql:</span><span class="hljs-number">5.7</span> \
 --character-set-server=utf8mb4 \
---collation-server=utf8mb4_unicode_ci</code></pre><h2 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h2><blockquote><p>基于<code>Debian</code>构建<br><a href="https://hub.docker.com/_/redis" target="_blank" rel="noopener">docker hub info</a><br><a href="http://note.youdao.com/noteshare?id=16d350cf644fb17b31599b7ce12ca207" target="_blank" rel="noopener">redis.conf</a></p></blockquote><pre><code class="docker"># 带验证简单启动 启动aof
-docker run -d --name redisdock -p 16379:6379 redis --requirepass &quot;123456&quot; --appendonly yes
+--collation-server=utf8mb4_unicode_ci</code></pre><h2 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h2><blockquote><p>基于<code>Debian</code>构建<br><a href="https://hub.docker.com/_/redis" target="_blank" rel="noopener">docker hub info</a><br><a href="http://note.youdao.com/noteshare?id=16d350cf644fb17b31599b7ce12ca207" target="_blank" rel="noopener">redis.conf</a></p></blockquote><pre><code class="hljs docker"><span class="hljs-comment"># 带验证简单启动 启动aof</span>
+docker <span class="hljs-keyword">run</span><span class="bash"> -d --name redisdock -p 16379:6379 redis --requirepass <span class="hljs-string">"123456"</span> --appendonly yes</span>
 
-# 挂载conf并持久化启动
-# window10
-docker run -d -p 6379:6379 -v /a/docker/redis/conf/redis.conf:/etc/redis/redis.conf -v /a/docker/redis/data:/data -e TZ=Asia/Shanghai --name redis --network dev --restart=always redis redis-server /etc/redis/redis.conf
+<span class="hljs-comment"># 挂载conf并持久化启动</span>
+<span class="hljs-comment"># window10</span>
+docker <span class="hljs-keyword">run</span><span class="bash"> -d -p 6379:6379 -v /a/docker/redis/conf/redis.conf:/etc/redis/redis.conf -v /a/docker/redis/data:/data -e TZ=Asia/Shanghai --name redis --network dev --restart=always redis redis-server /etc/redis/redis.conf</span>
 
-# centos7
-docker run -d -p 26379:6379 \
--v /usr/local/docker/redis/conf/redis.conf:/etc/redis/redis.conf \
--v /usr/local/docker/redis/data:/data \
+<span class="hljs-comment"># centos7</span>
+docker <span class="hljs-keyword">run</span><span class="bash"> -d -p 26379:6379 \
+-v /usr/<span class="hljs-built_in">local</span>/docker/redis/conf/redis.conf:/etc/redis/redis.conf \
+-v /usr/<span class="hljs-built_in">local</span>/docker/redis/data:/data \
 -e TZ=Asia/Shanghai \
 --name hanlp-api-hub-redis6 --network dev --restart=always \
-redis:latest redis-server /etc/redis/redis.conf</code></pre><blockquote><p>手动设置密码</p></blockquote><pre><code class="docker"># 进入redis的容器
+redis:latest redis-server /etc/redis/redis.conf</span></code></pre><blockquote><p>手动设置密码</p></blockquote><pre><code class="hljs docker"><span class="hljs-comment"># 进入redis的容器</span>
 docker exec -it redis /bin/bash
-#  运行命令
+<span class="hljs-comment">#  运行命令</span>
 redis-cli
 
-# 查看现有的redis密码
-127.0.0.1:6379&gt; config get requirepass
-1) &quot;requirepass&quot;
-2) &quot;&quot;
-# 设置redis密码
-127.0.0.1:6379&gt;config set requirepass ****（****为你要设置的密码）
-OK</code></pre><p><strong>如何查看已运行的容器的docker run启动参数</strong></p><pre><code class="docker">docker run --rm -v /var/run/docker.sock:/var/run/docker.sock assaflavie/runlike redis(查看其它的，更换对应的container名称即可)</code></pre><blockquote><p><a href="https://redis.io/topics/config" target="_blank" rel="noopener">redis conf</a><br><a href="http://note.youdao.com/noteshare?id=16d350cf644fb17b31599b7ce12ca207" target="_blank" rel="noopener">my conf</a></p><p>常用参数：</p><pre><code># 网络开放
-bind 0.0.0.0
-# 端口号
-port 6379
-# 安全验证
-requirepass wanghaocun
-# RDB同步时间
-save 900 1
-save 300 10
-save 60 10000
-# RDB文件路径
-dir ./
-# 开启AOF
-appendonly yes
-# AOF同步时间
-appendfsync everysec
-# RDB &amp; AOF混合持久化  
-aof-use-rdb-preamble yes</code></pre><p><a href="https://redis.io/topics/persistence" target="_blank" rel="noopener">redis persistence</a><br><a href="https://blog.csdn.net/yhl_jxy/article/details/91879874" target="_blank" rel="noopener">混合持久化</a></p></blockquote><h2 id="mongo"><a href="#mongo" class="headerlink" title="mongo"></a>mongo</h2><blockquote><p>基于<code>Ubuntu</code>构建<br><a href="https://hub.docker.com/_/mongo" target="_blank" rel="noopener">docker hub info</a></p></blockquote><pre><code>docker network create dev
+<span class="hljs-comment"># 查看现有的redis密码</span>
+<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">6379</span>&gt; config get requirepass
+<span class="hljs-number">1</span>) <span class="hljs-string">"requirepass"</span>
+<span class="hljs-number">2</span>) <span class="hljs-string">""</span>
+<span class="hljs-comment"># 设置redis密码</span>
+<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">6379</span>&gt;config set requirepass ****（****为你要设置的密码）
+OK</code></pre><p><strong>如何查看已运行的容器的docker run启动参数</strong></p><pre><code class="hljs docker">docker <span class="hljs-keyword">run</span><span class="bash"> --rm -v /var/run/docker.sock:/var/run/docker.sock assaflavie/runlike redis(查看其它的，更换对应的container名称即可)</span></code></pre><blockquote><p><a href="https://redis.io/topics/config" target="_blank" rel="noopener">redis conf</a><br><a href="http://note.youdao.com/noteshare?id=16d350cf644fb17b31599b7ce12ca207" target="_blank" rel="noopener">my conf</a></p><p>常用参数：</p><pre><code class="hljs yaml"><span class="hljs-comment"># 网络开放</span>
+<span class="hljs-string">bind</span> <span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>
+<span class="hljs-comment"># 端口号</span>
+<span class="hljs-string">port</span> <span class="hljs-number">6379</span>
+<span class="hljs-comment"># 安全验证</span>
+<span class="hljs-string">requirepass</span> <span class="hljs-string">wanghaocun</span>
+<span class="hljs-comment"># RDB同步时间</span>
+<span class="hljs-string">save</span> <span class="hljs-number">900</span> <span class="hljs-number">1</span>
+<span class="hljs-string">save</span> <span class="hljs-number">300</span> <span class="hljs-number">10</span>
+<span class="hljs-string">save</span> <span class="hljs-number">60</span> <span class="hljs-number">10000</span>
+<span class="hljs-comment"># RDB文件路径</span>
+<span class="hljs-string">dir</span> <span class="hljs-string">./</span>
+<span class="hljs-comment"># 开启AOF</span>
+<span class="hljs-string">appendonly</span> <span class="hljs-literal">yes</span>
+<span class="hljs-comment"># AOF同步时间</span>
+<span class="hljs-string">appendfsync</span> <span class="hljs-string">everysec</span>
+<span class="hljs-comment"># RDB &amp; AOF混合持久化  </span>
+<span class="hljs-string">aof-use-rdb-preamble</span> <span class="hljs-literal">yes</span></code></pre><p><a href="https://redis.io/topics/persistence" target="_blank" rel="noopener">redis persistence</a><br><a href="https://blog.csdn.net/yhl_jxy/article/details/91879874" target="_blank" rel="noopener">混合持久化</a></p></blockquote><h2 id="mongo"><a href="#mongo" class="headerlink" title="mongo"></a>mongo</h2><blockquote><p>基于<code>Ubuntu</code>构建<br><a href="https://hub.docker.com/_/mongo" target="_blank" rel="noopener">docker hub info</a></p></blockquote><pre><code class="hljs routeros">docker<span class="hljs-built_in"> network </span>create dev
 
-# 简单启动mongo服务实例
-docker run -d -p 27017:27017 -v /a/Docker/mongo/data:/data/db -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=123456 --name mongo --network dev --restart=always  mongo</code></pre><blockquote><p>Navicat连接后记得勾选<code>查看</code>-&gt;<code>显示隐藏的项目</code>菜单项，否则默认数据库不显示</p></blockquote><h2 id="mongo-express"><a href="#mongo-express" class="headerlink" title="mongo-express"></a>mongo-express</h2><p><a href="https://hub.docker.com/_/mongo-express" target="_blank" rel="noopener">docker hub info</a></p><pre><code class="sh"># 简单启动mongo-express服务实例
-docker run -d -p 8081:8081 -e ME_CONFIG_MONGODB_ADMINUSERNAME=root -e ME_CONFIG_MONGODB_ADMINPASSWORD=123456 -e ME_CONFIG_BASICAUTH_USERNAME=admin -e ME_CONFIG_BASICAUTH_PASSWORD=123456 -e ME_CONFIG_OPTIONS_EDITORTHEME=monokai --name mongo-express --network dev --restart=always mongo-express</code></pre><h2 id="rabbitmq"><a href="#rabbitmq" class="headerlink" title="rabbitmq"></a>rabbitmq</h2><blockquote><p>基于<code>Ubuntu</code>构建<br><a href="https://www.rabbitmq.com/admin-guide.html" target="_blank" rel="noopener">admin-guide</a></p></blockquote><pre><code># [rabbitmq:3-management]带web管理
-# 制定USER/PASS不会创建guest用户
-# -e TZ=&quot;Asia/Shanghai&quot; 不生效
-docker run -d -p 5672:5672 -p 15672:15672 \
+<span class="hljs-comment"># 简单启动mongo服务实例</span>
+docker <span class="hljs-builtin-name">run</span> -d -p 27017:27017 -v /a/Docker/mongo/data:/data/db -e <span class="hljs-attribute">MONGO_INITDB_ROOT_USERNAME</span>=root -e <span class="hljs-attribute">MONGO_INITDB_ROOT_PASSWORD</span>=123456 --name mongo --network dev <span class="hljs-attribute">--restart</span>=always  mongo</code></pre><blockquote><p>Navicat连接后记得勾选<code>查看</code>-&gt;<code>显示隐藏的项目</code>菜单项，否则默认数据库不显示</p></blockquote><h2 id="mongo-express"><a href="#mongo-express" class="headerlink" title="mongo-express"></a>mongo-express</h2><p><a href="https://hub.docker.com/_/mongo-express" target="_blank" rel="noopener">docker hub info</a></p><pre><code class="hljs sh"><span class="hljs-comment"># 简单启动mongo-express服务实例</span>
+docker run -d -p 8081:8081 -e ME_CONFIG_MONGODB_ADMINUSERNAME=root -e ME_CONFIG_MONGODB_ADMINPASSWORD=123456 -e ME_CONFIG_BASICAUTH_USERNAME=admin -e ME_CONFIG_BASICAUTH_PASSWORD=123456 -e ME_CONFIG_OPTIONS_EDITORTHEME=monokai --name mongo-express --network dev --restart=always mongo-express</code></pre><h2 id="rabbitmq"><a href="#rabbitmq" class="headerlink" title="rabbitmq"></a>rabbitmq</h2><blockquote><p>基于<code>Ubuntu</code>构建<br><a href="https://www.rabbitmq.com/admin-guide.html" target="_blank" rel="noopener">admin-guide</a></p></blockquote><pre><code class="hljs properties"><span class="hljs-comment"># [rabbitmq:3-management]带web管理</span>
+<span class="hljs-comment"># 制定USER/PASS不会创建guest用户</span>
+<span class="hljs-comment"># -e TZ="Asia/Shanghai" 不生效</span>
+<span class="hljs-attr">docker</span> <span class="hljs-string">run -d -p 5672:5672 -p 15672:15672 \
 -h dev-rabbit \
 -e RABBITMQ_DEFAULT_USER=admin \
 -e RABBITMQ_DEFAULT_PASS=123456 \
 --name rabbit \
 --network dev \
-rabbitmq:3-management
+rabbitmq:3-management</span>
 
-docker exec -it rabbitmq /bin/bash
+<span class="hljs-attr">docker</span> <span class="hljs-string">exec -it rabbitmq /bin/bash</span>
+<span class="hljs-comment">
+# 服务器状态</span>
+<span class="hljs-attr">rabbitmqctl</span> <span class="hljs-string">status</span>
+<span class="hljs-comment">
+# 用户管理</span>
+<span class="hljs-attr">rabbitmqctl</span> <span class="hljs-string">list_users</span>
+<span class="hljs-attr">rabbitmqctl</span> <span class="hljs-string">add_user mall mall</span>
+<span class="hljs-attr">rabbitmqctl</span> <span class="hljs-string">delete_user mall</span>
+<span class="hljs-attr">rabbitmqctl</span> <span class="hljs-string">change_password mall 123456</span>
+<span class="hljs-comment"># tag可以为administrator, monitoring, management</span>
+<span class="hljs-attr">rabbitmqctl</span> <span class="hljs-string">set_user_tags mall administrator</span>
+<span class="hljs-comment">
+# 权限管理</span>
+<span class="hljs-attr">rabbitmqctl</span> <span class="hljs-string">list_permissions</span>
+<span class="hljs-attr">rabbitmqctl</span> <span class="hljs-string">list_user_permissions mall</span>
+<span class="hljs-attr">rabbitmqctl</span> <span class="hljs-string">clear_permissions [-p /mall] mall</span>
+<span class="hljs-attr">rabbitmqctl</span> <span class="hljs-string">set_permissions -p /mall mall “.*” “.*” “.*”</span>
+<span class="hljs-comment">
+# vhost管理</span>
+<span class="hljs-attr">rabbitmqctl</span> <span class="hljs-string">add_vhost /mall</span>
+<span class="hljs-attr">rabbitmqctl</span> <span class="hljs-string">delete_vhost /mall</span></code></pre><p>user tags</p><pre><code class="hljs routeros">Comma-separated list of tags <span class="hljs-keyword">to</span> apply <span class="hljs-keyword">to</span> the user. Currently supported by the management plugin:
 
-# 服务器状态
-rabbitmqctl status
+management<span class="hljs-built_in">
+User </span>can access the management plugin
+policymaker<span class="hljs-built_in">
+User </span>can access the management plugin <span class="hljs-keyword">and</span> manage policies <span class="hljs-keyword">and</span> parameters <span class="hljs-keyword">for</span> the vhosts they have access <span class="hljs-keyword">to</span>.
+monitoring<span class="hljs-built_in">
+User </span>can access the management plugin <span class="hljs-keyword">and</span> see all connections <span class="hljs-keyword">and</span> channels as well as node-related information.
+administrator<span class="hljs-built_in">
+User </span>can <span class="hljs-keyword">do</span> everything monitoring can <span class="hljs-keyword">do</span>, manage users, vhosts <span class="hljs-keyword">and</span> permissions, close other user<span class="hljs-string">'s connections, and manage policies and parameters for all vhosts.
 
-# 用户管理
-rabbitmqctl list_users
-rabbitmqctl add_user mall mall
-rabbitmqctl delete_user mall
-rabbitmqctl change_password mall 123456
-# tag可以为administrator, monitoring, management
-rabbitmqctl set_user_tags mall administrator
-
-# 权限管理
-rabbitmqctl list_permissions
-rabbitmqctl list_user_permissions mall
-rabbitmqctl clear_permissions [-p /mall] mall
-rabbitmqctl set_permissions -p /mall mall “.*” “.*” “.*”
-
-# vhost管理
-rabbitmqctl add_vhost /mall
-rabbitmqctl delete_vhost /mall</code></pre><p>user tags</p><pre><code>Comma-separated list of tags to apply to the user. Currently supported by the management plugin:
-
-management
-User can access the management plugin
-policymaker
-User can access the management plugin and manage policies and parameters for the vhosts they have access to.
-monitoring
-User can access the management plugin and see all connections and channels as well as node-related information.
-administrator
-User can do everything monitoring can do, manage users, vhosts and permissions, close other user&#39;s connections, and manage policies and parameters for all vhosts.
-
-Note that you can set any tag here; the links for the above four tags are just for convenience.</code></pre><h2 id="ELK"><a href="#ELK" class="headerlink" title="ELK"></a>ELK</h2><blockquote><p>Note: Pulling an images requires using a specific version number tag. The latest tag is not supported.</p></blockquote><h3 id="elasticsearch"><a href="#elasticsearch" class="headerlink" title="elasticsearch"></a>elasticsearch</h3><blockquote><p>基于<code>CentOS</code>构建<br><a href="https://hub.docker.com/_/elasticsearch" target="_blank" rel="noopener">docker hub info</a></p></blockquote><pre><code class="docker"># 创建容器内桥接网络用于kibana等
+Note that you can set any tag here; the links for the above four tags are just for convenience.</span></code></pre><h2 id="ELK"><a href="#ELK" class="headerlink" title="ELK"></a>ELK</h2><blockquote><p>Note: Pulling an images requires using a specific version number tag. The latest tag is not supported.</p></blockquote><h3 id="elasticsearch"><a href="#elasticsearch" class="headerlink" title="elasticsearch"></a>elasticsearch</h3><blockquote><p>基于<code>CentOS</code>构建<br><a href="https://hub.docker.com/_/elasticsearch" target="_blank" rel="noopener">docker hub info</a></p></blockquote><pre><code class="hljs docker"><span class="hljs-comment"># 创建容器内桥接网络用于kibana等</span>
 docker network create dev
-# 运行容器
-docker run -d -p 9200:9200 -p 9300:9300 \
+<span class="hljs-comment"># 运行容器</span>
+docker <span class="hljs-keyword">run</span><span class="bash"> -d -p 9200:9200 -p 9300:9300 \
 -e discovery.type=single-node \
 -e cluster.name=elasticsearch \
 -e TZ=Asia/Shanghai \
 -v a:/docker/elasticsearch/plugins:/usr/share/elasticsearch/plugins \
 -v a:/docker/elasticsearch/data:/usr/share/elasticsearch/data \
 --name elasticsearch --network dev --restart=always \
-elasticsearch:7.6.2
+elasticsearch:7.6.2</span>
 
 docker exec -it elasticsearch /bin/bash
 
-elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.6.2/elasticsearch-analysis-ik-7.6.2.zip
+elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.<span class="hljs-number">6.2</span>/elasticsearch-analysis-ik-<span class="hljs-number">7.6</span>.<span class="hljs-number">2</span>.zip
 
-docker restart elasticsearch</code></pre><h3 id="logstash"><a href="#logstash" class="headerlink" title="logstash"></a>logstash</h3><blockquote><p>基于<code>CentOS</code>构建<br><a href="https://hub.docker.com/_/logstash" target="_blank" rel="noopener">docker hub info</a></p></blockquote><pre><code>docker run -d -p 4560:4560 -p 4561:4561 -p 4562:4562 -p 4563:4563 \
+docker restart elasticsearch</code></pre><h3 id="logstash"><a href="#logstash" class="headerlink" title="logstash"></a>logstash</h3><blockquote><p>基于<code>CentOS</code>构建<br><a href="https://hub.docker.com/_/logstash" target="_blank" rel="noopener">docker hub info</a></p></blockquote><pre><code class="hljs angelscript">docker run -d -p <span class="hljs-number">4560</span>:<span class="hljs-number">4560</span> -p <span class="hljs-number">4561</span>:<span class="hljs-number">4561</span> -p <span class="hljs-number">4562</span>:<span class="hljs-number">4562</span> -p <span class="hljs-number">4563</span>:<span class="hljs-number">4563</span> \
 -v a:/docker/logstash/conf/logstash.conf:/usr/share/logstash/pipeline/logstash.conf \
 -e TZ=Asia/Shanghai \
 --name logstash --network dev --restart=always \
-logstash:7.6.2
+logstash:<span class="hljs-number">7.6</span><span class="hljs-number">.2</span>
 
 # 进入容器内部，安装`json_lines`插件
-logstash-plugin install logstash-codec-json_lines</code></pre><h3 id="kibana"><a href="#kibana" class="headerlink" title="kibana"></a>kibana</h3><blockquote><p>基于<code>CentOS</code>构建<br><a href="https://hub.docker.com/_/kibana" target="_blank" rel="noopener">docker hub info</a></p></blockquote><pre><code># 使用es网络内部连接
-docker run -d -p 5601:5601 \
--e TZ=Asia/Shanghai \
---name kibana --network dev --restart=always \
+logstash-plugin install logstash-codec-json_lines</code></pre><h3 id="kibana"><a href="#kibana" class="headerlink" title="kibana"></a>kibana</h3><blockquote><p>基于<code>CentOS</code>构建<br><a href="https://hub.docker.com/_/kibana" target="_blank" rel="noopener">docker hub info</a></p></blockquote><pre><code class="hljs routeros"><span class="hljs-comment"># 使用es网络内部连接</span>
+docker <span class="hljs-builtin-name">run</span> -d -p 5601:5601 \
+-e <span class="hljs-attribute">TZ</span>=Asia/Shanghai \
+--name kibana --network dev <span class="hljs-attribute">--restart</span>=always \
 kibana:7.6.2</code></pre><blockquote><p>Note: In this example, Kibana is using the default configuration and expects to connect to a running Elasticsearch instance at <a href="http://localhost:9200" target="_blank" rel="noopener">http://localhost:9200</a></p></blockquote><blockquote><p>Kibana can be accessed by browser via <a href="http://localhost:5601" target="_blank" rel="noopener">http://localhost:5601</a> or <a href="http://host-ip:5601" target="_blank" rel="noopener">http://host-ip:5601</a></p></blockquote></div><hr><div><div class="post-metas mb-3"><div class="post-meta"><i class="iconfont icon-tags"></i> <a class="hover-with-bg" href="/tags/docker/">docker</a> <a class="hover-with-bg" href="/tags/tech/">tech</a></div></div><p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p><div class="post-prevnext row"><article class="post-prev col-6"></article><article class="post-next col-6"><a href="/posts/hello-world/"><span class="hidden-mobile">Hello World</span> <span class="visible-mobile">下一篇</span> <i class="iconfont icon-arrowright"></i></a></article></div></div></article></div></div></div><div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn"><div id="toc"><p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p><div id="tocbot"></div></div></div></div></div></main><a id="scroll-top-button" href="#" role="button"><i class="iconfont icon-arrowup" aria-hidden="true"></i></a><div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable modal-lg" role="document"><div class="modal-content"><div class="modal-header text-center"><h4 class="modal-title w-100 font-weight-bold">搜索</h4><button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button></div><div class="modal-body mx-3"><div class="md-form mb-5"><input type="text" id="local-search-input" class="form-control validate"> <label data-error="x" data-success="v" for="local-search-input">关键词</label></div><div class="list-group" id="local-search-result"></div></div></div></div></div><footer class="mt-5"><div class="text-center py-3"><div><a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a></div></div></footer><script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script><script src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script><script src="/js/debouncer.js"></script><script src="/js/main.js"></script><script src="/js/lazyload.js"></script><script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js"></script><script src="/js/clipboard-use.js"></script><script src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js"></script><script>$(document).ready(function(){var t=$("#board-ctn").offset().top;tocbot.init({tocSelector:"#tocbot",contentSelector:"#post-body",headingSelector:"h1,h2,h3,h4,h5,h6",linkClass:"tocbot-link",activeLinkClass:"tocbot-active-link",listClass:"tocbot-list",isCollapsedClass:"tocbot-is-collapsed",collapsibleClass:"tocbot-is-collapsible",collapseDepth:0,scrollSmooth:!0,headingsOffset:-t}),0<$(".toc-list-item").length&&$("#toc").css("visibility","visible")})</script><script src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js"></script><script>var typed=new Typed("#subtitle",{strings:["  ","Docker Container Misc&nbsp;"],cursorChar:"_",typeSpeed:70,loop:!1});typed.stop(),$(document).ready(function(){$(".typed-cursor").addClass("h2"),typed.start()})</script><script src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js"></script><script>anchors.options = {
       placement: "right",
       visible: "hover",
