@@ -6,7 +6,7 @@ RUN mkdir -p /some/path \
   &amp;&amp; /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
   &amp;&amp; echo &#39;Asia/Shanghai&#39; &gt;/etc/timezone
   ==============================================================
-...</code></pre></li><li><p>run 加环境变量 -e TZ（并非所有容器都生效）<br>```<br>docker run … \</p></li><li><p>e TZ=Asia/Shanghai<br>…</p><pre><code></code></pre></li></ul><h2 id="manual"><a href="#manual" class="headerlink" title="manual"></a>manual</h2><h3 id="docker-practice"><a href="#docker-practice" class="headerlink" title="docker_practice"></a>docker_practice</h3><p><a href="https://vuepress.mirror.docker-practice.com/" target="_blank" rel="noopener">online</a><br><a href="https://github.com/yeasy/docker_practice/wiki/%E7%A6%BB%E7%BA%BF%E9%98%85%E8%AF%BB%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3" target="_blank" rel="noopener">offline</a></p><pre><code class="sh"># 为了保持内容为最新，建议每次阅读前先 pull 最新镜像
+...</code></pre></li><li><p>run 加环境变量 -e TZ（并非所有容器都生效）</p><pre><code>docker run -e TZ=Asia/Shanghai ...</code></pre></li></ul><h2 id="manual"><a href="#manual" class="headerlink" title="manual"></a>manual</h2><h3 id="docker-practice"><a href="#docker-practice" class="headerlink" title="docker_practice"></a>docker_practice</h3><p><a href="https://vuepress.mirror.docker-practice.com/" target="_blank" rel="noopener">online</a><br><a href="https://github.com/yeasy/docker_practice/wiki/%E7%A6%BB%E7%BA%BF%E9%98%85%E8%AF%BB%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3" target="_blank" rel="noopener">offline</a></p><pre><code class="sh"># 为了保持内容为最新，建议每次阅读前先 pull 最新镜像
 
 # GitBook 格式
 docker pull ccr.ccs.tencentyun.com/dockerpracticesig/docker_practice
