@@ -6,7 +6,8 @@ RUN mkdir -p /some/path \
   &amp;&amp; /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
   &amp;&amp; echo &#39;Asia/Shanghai&#39; &gt;/etc/timezone
   ==============================================================
-...</code></pre></li><li><p>run 加环境变量 -e TZ（并非所有容器都生效）<br>```</p><h1 id="docker-run-…"><a href="#docker-run-…" class="headerlink" title="docker run … \"></a>docker run … \</h1></li><li><h1 id="e-TZ-Asia-Shanghai"><a href="#e-TZ-Asia-Shanghai" class="headerlink" title="e TZ=Asia/Shanghai \"></a>e TZ=Asia/Shanghai \</h1></li></ul><pre><code>
+...</code></pre></li><li><p>run 加环境变量 -e TZ（并非所有容器都生效）</p><pre><code>docker run ... \
+</code></pre></li></ul><p>-e TZ=Asia/Shanghai \</p><p>…</p><pre><code>
 ## manual
 ### docker_practice
 [online](https://vuepress.mirror.docker-practice.com/)  
